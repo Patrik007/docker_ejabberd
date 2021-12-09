@@ -1,0 +1,1 @@
+docker run -p 13340:13340 -p 13339:13339 -p 13338:13338 -p 5269:5269 -d ejabberd/ecs:latest
