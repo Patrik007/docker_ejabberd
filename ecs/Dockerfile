@@ -6,7 +6,8 @@ LABEL maintainer="ProcessOne <contact@process-one.net>" \
     product="Ejabberd Community Server builder"
 
 # Get ejabberd sources, dependencies, configuration
-RUN git clone https://github.com/processone/ejabberd.git
+# RUN git clone https://github.com/processone/ejabberd.git
+RUN git clone https://github.com/Patrik007/ejabberd.git
 WORKDIR /ejabberd
 COPY vars.config .
 COPY rel/*exs rel/
@@ -96,7 +97,14 @@ ADD --chown=ejabberd:ejabberd https://download.process-one.net/cacert.pem conf/c
 # Setup runtime environment
 USER ejabberd
 VOLUME ["$HOME/database","$HOME/conf","$HOME/logs","$HOME/upload"]
-EXPOSE 1883 4369-4399 5222 5269 5280 5443
+
+EXPOSE 13338
+EXPOSE 13339
+EXPOSE 5269
+EXPOSE 13330
+EXPOSE 4369
+EXPOSE 13340
+# EXPOSE 1883 4369-4399 5222 5269 5280 5443
 
 ENTRYPOINT ["/home/ejabberd/bin/ejabberdctl"]
 CMD ["foreground"]
