@@ -2,6 +2,8 @@ FROM ejabberd/mix as builder
 ARG VERSION
 ENV VERSION=${VERSION:-latest} \
     MIX_ENV=prod
+RUN echo ${VERSION}
+
 LABEL maintainer="ProcessOne <contact@process-one.net>" \
     product="Ejabberd Community Server builder"
 
@@ -11,9 +13,10 @@ RUN git clone https://github.com/Patrik007/ejabberd.git
 WORKDIR /ejabberd
 COPY vars.config .
 COPY rel/*exs rel/
+
 RUN git checkout ${VERSION/latest/HEAD} \
-    && mix deps.get \
-    && (cd deps/eimp; ./configure)
+   && mix deps.get \
+   && (cd deps/eimp; ./configure)
 
 # Compile
 RUN mix do compile, distillery.init, distillery.release --env=prod

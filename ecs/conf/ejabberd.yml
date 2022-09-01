@@ -9,6 +9,7 @@ log_rotate_count: 100
 # certfiles:
 #  - /etc/letsencrypt/live/domain.tld/fullchain.pem
 #  - /etc/letsencrypt/live/domain.tld/privkey.pem
+default_db: sql
 
 registration_timeout: infinity
 
@@ -139,7 +140,7 @@ modules:
   # mod_last:
   #     db_type: mnesia
   mod_elenty_last:
-      db_type: mnesia
+      db_type: sql
   # mod_mam:
     ## Mnesia is limited to 2GB, better to use an SQL backend
     ## For small servers SQLite is a good fit and is very easy
