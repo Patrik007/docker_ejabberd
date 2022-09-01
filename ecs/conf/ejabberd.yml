@@ -14,7 +14,7 @@ default_db: sql
 registration_timeout: infinity
 
 sql_type: mysql
-sql_server: "localhost"
+sql_server: "xmpp.elenty.com"
 sql_port: 3306
 sql_database: "ejabberd"
 sql_username: "ejabberd"
