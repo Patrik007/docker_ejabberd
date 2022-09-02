@@ -8,4 +8,4 @@ docker run -v /home/ejabberd_persistent/database:/home/ejabberd/database -p 1334
 
 mix dev run cmd
 docker run --rm -it -p 13340:13340 -p 13339:13339 -p 13338:13338 -p 5269:5269 -v $(pwd):$(pwd) -w $(pwd) --entrypoint="/usr/bin/iex" ejabberd/mix -S mix
-docker run --rm -it -p 13340:13340 -p 13339:13339 -p 13338:13338 -p 5269:5269 -v $(pwd):$(pwd) -v /home/ejabberd_persistent/database:$(pwd)/database -w $(pwd) --entrypoint="/usr/bin/iex" ejabberd/mix -S mix
+docker run --rm -it -p 13340:13340 -p 13339:13339 -p 13338:13338 -p 5269:5269 -v $(pwd):$(pwd) -v /var/lib/ejabberd/database:/home/ejabberd/database -v /var/lib/ejabberd/logs:/home/ejabberd/logs -w $(pwd) --entrypoint="/usr/bin/iex" ejabberd/mix -S mix
